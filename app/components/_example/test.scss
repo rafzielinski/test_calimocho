@@ -1,0 +1,18 @@
+.test {
+  @extend %h4;
+
+  padding: 0.5em 1em;
+
+  font-weight: 500;
+  text-transform: uppercase;
+
+  background: $c-primary;
+
+  border: 0;
+  border-bottom: 0.25em solid $c-grey-2;
+  border-radius: 0.5em;
+
+  color: $c-grey-4;
+
+  cursor: pointer;
+}

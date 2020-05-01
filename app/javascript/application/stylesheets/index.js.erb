@@ -1,0 +1,12 @@
+// import './global/index.scss';
+// Those have to be lodeded one by one as otherwise webpack might load them in wrong order. Sic!
+
+import './vendors/index.scss';
+import './global/index.scss';
+import './pages/index.scss';
+import './widgets/index.scss';
+
+<% css_glob = Rails.application.root.join('app', 'components', '**', '*.{scss}') %>
+<% Dir.glob(css_glob).each do |file| %>
+  import '<%= file %>';
+<% end %>

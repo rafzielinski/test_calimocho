@@ -1,0 +1,133 @@
+// NOTES:
+// - solve scale for other elements
+// - add some color
+//
+
+// Fonts import
+
+// -- Colours
+// Required: primary, black, white
+// Colour helper function available
+// Usage: c('name')
+$settings-colours: (
+  primary: #23252d,
+  secondary: #ebeb5e,
+  black: #000,
+  white: #fff,
+);
+
+// -- Spacings
+// Required: All
+// Spacing helper function available
+// Usage: s('name')
+$settings-spacings: (
+  text-max-width: 640px,
+  content-max-width: 768px,
+  // px/rem
+    inner-max-width: 1024px,
+  // px/rem
+    outer-max-width: 1400px,
+  // px/rem
+);
+
+// -- Gaps
+// Required: -1, 0, 1
+// Gap helper function available
+// Usage: g('name')
+$settings-gaps: (
+  -1: 1rem,
+  // rem
+    0: 2rem,
+  // rem // *default gap size
+    1: 3rem,
+  // rem
+    2: 6rem
+);
+
+// -- Fonts
+$settings-font-base-size: 16px; // (Number [px])
+$settings-font-base-color: c(black);
+
+$settings-font-primary: 'JetBrains Mono', 'Lato', Arial, Helvetica, sans-serif;
+$settings-font-secondary: 'JetBrains Mono', 'Lato', Arial, Helvetica, sans-serif;
+
+// First step for the font setup.
+// Font system scale:
+// Font sizes, line heights and margins
+// would be calculated respectively.
+$settings-font-scale: 1.125;
+
+$modularscale: (
+  base: $settings-font-base-size,
+  ratio: $settings-font-scale,
+);
+
+// Second step font setup
+$settings-typography: (
+  // NOTE: Do we want responsive font size by default?
+    // element: (
+    //   font-family: (String)
+    //   font-size:* (Number [rem, px], example: [x, (x, y)]**)
+    //   line-height:* (Number [em, px], example: [x, (x, y)]**)
+    //   font-weight: (Number)
+    //   text-transform: (String)
+    //   margin-bottom: (Number [em, rem, px])
+    //   color: (Func, color reference example: [c('colorName')])
+    //   max-width: ()
+    // ),
+    //
+    // * ommit or set to false if you don't want to
+    //   overwrite typography scale.
+    // ** single or double values for mobile [x] & desktop [y] devices
+    header1: (),
+  header2: (),
+  header3: (),
+  header4: (),
+  header5: (),
+  header6: (),
+  intro: (),
+  paragraph: (),
+  paragraph-small: (),
+  link: (),
+  unordered-list: (),
+  ul-item: (),
+  ordered-list: (),
+  ol-item: (),
+  quote: ()
+);
+
+// Third step font setup
+// Additional font styling:
+// This section would NOT overwrite any values from $settings-typography map above
+%settings-header1 {
+}
+%settings-header2 {
+}
+%settings-header3 {
+}
+%settings-header4 {
+}
+%settings-header5 {
+}
+%settings-header6 {
+}
+%settings-intro {
+}
+%settings-paragraph {
+}
+%settings-paragraph-small {
+}
+%settings-link {
+}
+%settings-list {
+}
+%settings-unordered-list {
+}
+%settings-ul-item {
+}
+%settings-ordered-list {
+}
+%settings-ol-item {
+}
+%settings-quote {
+}

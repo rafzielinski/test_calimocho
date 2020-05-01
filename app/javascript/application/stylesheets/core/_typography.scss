@@ -1,0 +1,84 @@
+// ***
+// TYPOGRAPHY
+// ***
+$typographyList: (
+  'header1',
+  'header2',
+  'header3',
+  'header4',
+  'header5',
+  'header6',
+  'intro',
+  'paragraph',
+  'paragraph-small' 'link',
+  'unordered-list',
+  'ul-item',
+  'ordered-list',
+  'ol-item',
+  'quote'
+);
+
+$default-typography-breakpoint: 786px;
+
+$default-font-sizes: (
+  header6: ms(0),
+  header5: ms(1),
+  header4: ms(2),
+  header3: ms(3),
+  header2: ms(4),
+  header1: ms(5),
+);
+
+%h1 {
+  @include generateTypography('header1');
+}
+%h2 {
+  @include generateTypography('header2');
+}
+%h3 {
+  @include generateTypography('header3');
+}
+%h4 {
+  @include generateTypography('header4');
+}
+%h5 {
+  @include generateTypography('header5');
+}
+%h6 {
+  @include generateTypography('header6');
+}
+
+%intro {
+  @include generateTypography('intro');
+}
+%p {
+  @include generateTypography('paragraph');
+}
+%p-small {
+  @include generateTypography('paragraph-small');
+}
+%link {
+  @include generateTypography('link');
+}
+%link-inline {
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-decoration: none;
+}
+%ul {
+  @include generateTypography('unordered-list');
+}
+%ul-li {
+  @include generateTypography('ul-item');
+}
+%ol {
+  @include generateTypography('ordered-list');
+}
+%ol-li {
+  @include generateTypography('ol-item');
+}
+%quote {
+  @include generateTypography('quote');
+}

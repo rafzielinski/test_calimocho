@@ -1,0 +1,26 @@
+.widget__columns {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  margin: 0 -1rem;
+
+  &-column {
+    flex: 1;
+
+    margin: 0.5rem 1rem;
+
+    min-width: 20rem;
+  }
+
+  &-title {
+    // @extend %h4;
+
+    margin-bottom: 0.5em;
+  }
+
+  &-text {
+    // @extend %para;
+  }
+}

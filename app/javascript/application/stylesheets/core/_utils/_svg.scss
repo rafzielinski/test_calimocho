@@ -1,0 +1,26 @@
+@function svg($icon, $s: 'none', $f: 'none') {
+  $f-query: 'fill=none';
+  $s-query: 'stroke=none';
+
+  @if ($f != 'none') {
+    @if (str-index(quote($f), '#')) {
+      $f-color: str-slice(inspect($f), 2);
+      $f-query: 'fill=%23' + $f-color;
+    } @else {
+      $f-query: 'fill=' + $f;
+    }
+  }
+
+  @if ($s != 'none') {
+    @if (str-index(quote($s), '#')) {
+      $s-color: str-slice(inspect($s), 2);
+      $s-query: 'stroke=%23' + $s-color;
+    } @else {
+      $s-query: 'stroke=' + $s;
+    }
+  }
+
+  @return unquote(
+    'url("~IMAGES/svgs/' + $icon + '.svg?' + $f-query + '&' + $s-query + '")'
+  );
+}

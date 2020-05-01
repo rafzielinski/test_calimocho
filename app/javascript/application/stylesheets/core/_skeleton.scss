@@ -1,0 +1,283 @@
+//
+// Notes:
+// - check grid elements flow, order and stacking
+//
+
+// *
+// LAYOUT
+// *
+%layout__wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 100vw;
+  height: auto;
+
+  overflow: hidden;
+}
+
+%layout__body {
+  display: grid;
+  grid-auto-rows: auto;
+  grid-auto-flow: row;
+
+  width: 100%;
+  height: auto;
+
+  grid-template-columns:
+    0 g(-1) g(-1) minmax(min-content, $mw-content) g(-1) g(-1)
+    0;
+
+  @include screen(medium) {
+    $min-content: $mw-content - (g(-1) * 4);
+    $inner-span: not-less-than(($mw-inner - $mw-content) / 2);
+    $outer-span: not-less-than(($mw-outer - $mw-inner) / 2, g(-1));
+
+    grid-template-columns:
+      minmax(0, 1fr) minmax(g(-1), $outer-span) minmax(g(-1), $inner-span)
+      minmax($min-content, $mw-content) minmax(g(-1), $inner-span) minmax(
+        g(-1),
+        $outer-span
+      )
+      minmax(0, 1fr);
+  }
+
+  @include screen(large) {
+    $min-content: $mw-content - (g(0) * 4);
+    $inner-span: not-less-than(($mw-inner - $mw-content) / 2);
+    $outer-span: not-less-than(($mw-outer - $mw-inner) / 2, g(0));
+
+    grid-template-columns:
+      minmax(0, 1fr) minmax(g(0), $outer-span) minmax(g(0), $inner-span)
+      minmax($min-content, $mw-content) minmax(g(0), $inner-span) minmax(
+        g(0),
+        $outer-span
+      )
+      minmax(0, 1fr);
+  }
+
+  @include screen(xlarge) {
+    $min-content: $mw-content - (g(1) * 4);
+    $inner-span: not-less-than(($mw-inner - $mw-content) / 2);
+    $outer-span: not-less-than(($mw-outer - $mw-inner) / 2, g(1));
+
+    grid-template-columns:
+      minmax(0, 1fr) minmax(g(1), $outer-span) minmax(g(1), $inner-span)
+      minmax($min-content, $mw-content) minmax(g(1), $inner-span) minmax(
+        g(1),
+        $outer-span
+      )
+      minmax(0, 1fr);
+  }
+
+  @include ie {
+    @for $i from 1 to 100 {
+      *:nth-child(#{$i}) {
+        grid-row: $i;
+      }
+    }
+  }
+}
+
+%layout {
+  &__item {
+    width: 100%;
+  }
+
+  &__item {
+    grid-column: 4 / 5;
+
+    &--to-left {
+      grid-column: 2 / 5;
+    }
+
+    &--to-right {
+      grid-column: 4 / 7;
+    }
+
+    &--wide {
+      grid-column: 3 / 6;
+    }
+
+    &--wide-to-left {
+      grid-column: 2 / 6;
+    }
+
+    &--wide-to-right {
+      grid-column: 3 / 7;
+    }
+
+    &--full-width {
+      grid-column: 2 / 7;
+    }
+
+    &--full-width-to-left {
+      grid-column: 1 / 7;
+    }
+
+    &--full-width-to-right {
+      grid-column: 2 / 8;
+    }
+
+    &--full-screen {
+      grid-column: 1 / 8;
+    }
+  }
+
+  @for $i from 1 to 9 {
+    // end number has to be 1 more than number of column lines
+    &__item-start {
+      &-#{$i} {
+        grid-column-start: $i;
+      }
+    }
+
+    &__item-end {
+      &-#{$i} {
+        grid-column-end: $i;
+      }
+    }
+  }
+}
+
+// *
+// SPACINGS
+// *
+
+// ***
+// Margin helper mixin
+// $direction -> String: has to be one of [ 'top', 'right', 'bottom', 'left', 'vertical', 'horizontal', 'all' ]
+// $multiplier -> Number: number by which margins would be multiplied
+// ***
+@mixin margin($direction: 'all', $multiplier: 1) {
+  $margin-small: g(-1) * $multiplier;
+  $margin-medium: g(0) * $multiplier;
+  $margin-large: g(1) * $multiplier;
+
+  @if ($direction == 'all') {
+    margin: $margin-small;
+    @include screen(medium) {
+      margin: $margin-medium;
+    }
+    @include screen(large) {
+      margin: $margin-large;
+    }
+  } @else if ($direction == 'vertical') {
+    margin-top: $margin-small;
+    margin-bottom: $margin-small;
+
+    @include screen(medium) {
+      margin-top: $margin-medium;
+      margin-bottom: $margin-medium;
+    }
+    @include screen(large) {
+      margin-top: $margin-large;
+      margin-bottom: $margin-large;
+    }
+  } @else if ($direction == 'horizontal') {
+    margin-right: $margin-small;
+    margin-left: $margin-small;
+
+    @include screen(medium) {
+      margin-right: $margin-medium;
+      margin-left: $margin-medium;
+    }
+    @include screen(large) {
+      margin-right: $margin-large;
+      margin-left: $margin-large;
+    }
+  } @else if
+    (
+      $direction ==
+        'top' or
+        $direction ==
+        'right' or
+        $direction ==
+        'bottom' or
+        $direction ==
+        'left'
+    )
+  {
+    margin-#{$direction}: $margin-small;
+    @include screen(medium) {
+      margin-#{$direction}: $margin-medium;
+    }
+    @include screen(large) {
+      margin-#{$direction}: $margin-large;
+    }
+  }
+}
+// Margin mixin alias
+@mixin m($direction: 'all', $multiplier: 1) {
+  @include margin($direction, $multiplier);
+}
+
+// ***
+// Padding helper mixin
+// $direction -> String: has to be one of [ 'top', 'right', 'bottom', 'left', 'vertical', 'horizontal', 'all' ]
+// $multiplier -> Number: number by which paddings would be multiplied
+// ***
+@mixin padding($direction: 'all', $multiplier: 1) {
+  $padding-small: g(-1) * $multiplier;
+  $padding-medium: g(0) * $multiplier;
+  $padding-large: g(1) * $multiplier;
+
+  @if ($direction == 'all') {
+    padding: $padding-small;
+    @include screen(medium) {
+      padding: $padding-medium;
+    }
+    @include screen(large) {
+      padding: $padding-large;
+    }
+  } @else if ($direction == 'vertical') {
+    padding-top: $padding-small;
+    padding-bottom: $padding-small;
+
+    @include screen(medium) {
+      padding-top: $padding-medium;
+      padding-bottom: $padding-medium;
+    }
+    @include screen(large) {
+      padding-top: $padding-large;
+      padding-bottom: $padding-large;
+    }
+  } @else if ($direction == 'horizontal') {
+    padding-right: $padding-small;
+    padding-left: $padding-small;
+
+    @include screen(medium) {
+      padding-right: $padding-medium;
+      padding-left: $padding-medium;
+    }
+    @include screen(large) {
+      padding-right: $padding-large;
+      padding-left: $padding-large;
+    }
+  } @else if
+    (
+      $direction ==
+        'top' or
+        $direction ==
+        'right' or
+        $direction ==
+        'bottom' or
+        $direction ==
+        'left'
+    )
+  {
+    padding-#{$direction}: $padding-small;
+    @include screen(medium) {
+      padding-#{$direction}: $padding-medium;
+    }
+    @include screen(large) {
+      padding-#{$direction}: $padding-large;
+    }
+  }
+}
+// Padding mixin alias
+@mixin p($direction: 'all', $multiplier: 1) {
+  @include padding($direction, $multiplier);
+}

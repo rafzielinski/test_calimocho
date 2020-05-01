@@ -1,0 +1,59 @@
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, or any plugin's
+// vendor/assets/javascripts directory can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// compiled file. JavaScript code in this file should be added after the last require_* statement.
+//
+// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
+// about supported directives.
+//
+//= require rails-ujs
+//= require activestorage
+//= require turbolinks
+//= require_tree .
+
+// Essentials
+import Rails from 'rails-ujs';
+// import Turbolinks from 'turbolinks';
+import * as ActiveStorage from 'activestorage';
+
+Rails.start();
+// Turbolinks.start();
+ActiveStorage.start();
+
+// Stimulus
+import { Application } from "stimulus"
+import { definitionsFromContext } from "stimulus/webpack-helpers"
+
+const application = Application.start()
+const context = require.context("./controllers", true, /\.js$/)
+application.load(definitionsFromContext(context))
+
+// Polyfills
+import 'babel-polyfill'
+import 'core-js'
+import 'whatwg-fetch'
+import 'element-closest-polyfill'
+import 'focus-visible/dist/focus-visible.min.js'
+// import "core-js/modules/es7.promise.finally";
+import CustomEvent from 'custom-event-polyfill';
+
+// Object-fit & object-position support for older browsers
+// import objectFitImages from 'object-fit-images';
+// objectFitImages('img', {watchMQ: true});
+
+// Smooth scroll to anchor links
+// const SmoothScroll = require('smooth-scroll')
+// const scroll = new SmoothScroll('a.scrollto');
+
+// ------------------
+
+// Gather all js files from components folders
+<% js_glob = Rails.application.root.join('app', 'views', 'components', '**', '*.{js}') %>
+<% Dir.glob(js_glob).each do |file| %>
+  import '<%= file %>';
+<% end %>
+

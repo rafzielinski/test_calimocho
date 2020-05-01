@@ -1,0 +1,118 @@
+@function searchTypographyMap($name, $key) {
+  @if map-get($settings-typography, $name) {
+    @return map-get(map-get($settings-typography, $name), $key);
+  } @else {
+    @return false;
+  }
+}
+
+@mixin applyModularScale($name) {
+  $header: str-index($name, 'header');
+  $quote: str-index($name, 'quote');
+  $intro: str-index($name, 'intro');
+  $paragraph-small: str-index($name, 'paragraph-small');
+  $link: str-index($name, 'link');
+
+  @if $settings-font-scale > 1 {
+    @if $header {
+      font-family: $settings-font-secondary;
+      font-size: map-get($default-font-sizes, $name);
+      line-height: 1.125;
+
+      margin-bottom: 0.5em;
+    } @else if $intro {
+      font-size: ms(1);
+      line-height: 1.4;
+
+      margin-bottom: 1em;
+    } @else if $paragraph-small {
+      font-size: ms(-1);
+      line-height: 1.5;
+
+      margin-bottom: 2em;
+    } @else if $quote {
+      font-size: ms(3);
+      line-height: 1.125;
+
+      margin-bottom: 0.5em;
+    } @else if $link {
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+    } @else {
+      font-size: ms(0);
+      line-height: 1.4;
+
+      margin-bottom: 1.5em;
+    }
+  }
+}
+
+@mixin applyTypographyMap($name) {
+  $font-family: searchTypographyMap($name, 'font-family');
+  $font-size: searchTypographyMap($name, 'font-size');
+  $line-height: searchTypographyMap($name, 'line-height');
+  $margin-bottom: searchTypographyMap($name, 'margin-bottom');
+  $color: searchTypographyMap($name, 'color');
+  $max-width: searchTypographyMap($name, 'max-width');
+  $text-transform: searchTypographyMap($name, 'text-transform');
+
+  @if $font-family {
+    font-family: $font-family;
+  } @else {
+    font-family: $settings-font-primary;
+  }
+
+  @if $font-size {
+    @if length($font-size) > 1 {
+      @each $val in $font-size {
+        $i: index($font-size, $val);
+        @if $i == 1 {
+          font-size: $val;
+        } @else {
+          @media screen and (min-width: $default-typography-breakpoint) {
+            font-size: $val;
+          }
+        }
+      }
+    } @else {
+      font-size: $font-size;
+    }
+  }
+
+  @if $line-height {
+    @if length($line-height) > 1 {
+      @each $val in $line-height {
+        $i: index($line-height, $val);
+        @if $i == 1 {
+          line-height: $val;
+        } @else {
+          @media screen and (min-width: $default-typography-breakpoint) {
+            line-height: $val;
+          }
+        }
+      }
+    } @else {
+      line-height: $line-height;
+    }
+  }
+
+  @if $margin-bottom {
+    margin-bottom: $margin-bottom;
+  }
+  @if $color {
+    color: $color;
+  }
+  @if $text-transform {
+    text-transform: $text-transform;
+  }
+  @if $max-width {
+    max-width: $max-width;
+  }
+}
+
+@mixin generateTypography($name) {
+  @include applyModularScale($name);
+  @include applyTypographyMap($name);
+  @extend %settings-#{$name} !optional;
+}

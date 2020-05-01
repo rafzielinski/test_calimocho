@@ -1,0 +1,17 @@
+.logged_in {
+  .scopes {
+    .scope-default-group {
+      display: inline-flex;
+    }
+  }
+
+  #sidebar {
+    #search_status_sidebar_section {
+      display: none;
+    }
+  }
+}
+.megadraft-editor .intro-paragraph {
+  font-size: 1.2em;
+  color: rgba(0, 0, 0, 0.5);
+}

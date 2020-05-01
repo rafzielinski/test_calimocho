@@ -1,0 +1,40 @@
+{
+  "name": "test_calimocho",
+  "private": true,      "husky": {
+        "hooks": {
+          "prepare-commit-msg": "lint-staged",
+          "pre-commit": "lint-staged"
+        }
+      },
+      "lint-staged": {
+        "{app,test}/**/*.{js,es6,jsx,scss,css}": "./node_modules/prettier/bin-prettier.js --write",
+        "{app,test}/**/*.rb": "bundle exec rubocop -a"
+      },
+
+  "dependencies": {
+    "@rails/webpacker": "3.5",
+    "activestorage": "^5.2.4-2",
+    "babel-preset-react": "^6.24.1",
+    "custom-event-polyfill": "^1.0.7",
+    "element-closest-polyfill": "^1.0.0",
+    "focus-visible": "^5.1.0",
+    "prop-types": "^15.7.2",
+    "rails-erb-loader": "^5.5.2",
+    "rails-ujs": "^5.2.4-2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "slickr_cms": "git+https://github.com/primate-inc/slickr#master",
+    "stimulus": "^1.1.1",
+    "svg-transform-loader": "^2.0.13"
+  },
+  "devDependencies": {
+    "@prettier/plugin-ruby": "^0.18.2",
+    "babel-preset-stage-1": "^6.24.1",
+    "husky": "^4.2.5",
+    "ignore-loader": "^0.1.2",
+    "lint-staged": "^10.2.2",
+    "modularscale-sass": "^3.0.10",
+    "prettier": "^2.0.5",
+    "webpack-dev-server": "2.11.2"
+  }
+}

@@ -1,0 +1,47 @@
+// Define vertical, horizontal, or both position
+@mixin center($position: 'b', $inject: null) {
+  position: absolute;
+
+  @if $position == 'v' {
+    top: 50%;
+
+    transform: translateY(0, -50%, 0) #{$inject};
+  } @else if $position == 'h' {
+    left: 50%;
+
+    transform: translate3d(-50%, 0, 0) #{$inject};
+  } @else if $position == 'b' {
+    top: 50%;
+    left: 50%;
+
+    transform: translate3d(-50%, -50%, 0) #{$inject};
+  }
+}
+
+// Generate margin helper classes from an array of values
+// Usage:
+// @include margins($margins);
+// @mixin margins($size) {
+//   @for $i from 1 through $size {
+//     .m {
+//       &-#{$i} { margin: #{$i}rem; }
+//       &t-#{$i} { margin-top: #{$i}rem; }
+//       &r-#{$i} { margin-right: #{$i}rem; }
+//       &b-#{$i} { margin-bottom: #{$i}rem; }
+//       &l-#{$i} { margin-left: #{$i}rem; }
+//     }
+//   }
+// }
+
+// // Generate padding helper classes from an array of values
+// @mixin paddings($size) {
+//   @for $i from 1 through $size {
+//     .p {
+//       &-#{$i} { padding: #{$i}rem; }
+//       &t-#{$i} { padding-top: #{$i}rem; }
+//       &r-#{$i} { padding-right: #{$i}rem; }
+//       &b-#{$i} { padding-bottom: #{$i}rem; }
+//       &l-#{$i} { padding-left: #{$i}rem; }
+//     }
+//   }
+// }

@@ -1,0 +1,114 @@
+// Add your font import here
+
+body {
+  font-family: $f-primary;
+  font-size: $f-base-size;
+  line-height: 1.4;
+  color: $c-black;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.intro,
+.para,
+.para-small,
+.ul,
+.ol,
+.quote {
+  display: block;
+  width: 100%;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.p,
+.p-small,
+.ul,
+.ol {
+  max-width: $mw-text;
+}
+
+.ul li,
+.ol li {
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.h1 {
+  @extend %h1;
+}
+.h2 {
+  @extend %h2;
+}
+.h3 {
+  @extend %h3;
+}
+.h4 {
+  @extend %h4;
+}
+.h5 {
+  @extend %h5;
+}
+.h6 {
+  @extend %h6;
+}
+
+.intro {
+  @extend %intro;
+}
+.para {
+  @extend %p;
+}
+.para-small {
+  @extend %p-small;
+}
+
+.quote {
+  @extend %quote;
+}
+
+.ul {
+  @extend %ul;
+}
+.ul li {
+  @extend %ul-li;
+}
+
+.ol {
+  @extend %ol;
+}
+.ol li {
+  @extend %ol-li;
+}
+
+.link {
+  @extend %link;
+}
+
+.link-inline {
+  @extend %link;
+  @extend %link-inline;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.para,
+.quote,
+.blockquote,
+.ul,
+.ol {
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,77 @@
+// Colour helper function
+// Usage: c('name')
+@function c($key) {
+  @return map-get($settings-colours, $key);
+}
+
+// Spacing helper function
+// Usage: s('name')
+@function s($key) {
+  @return map-get($settings-spacings, $key);
+}
+
+// Gap helper function
+// Usage: g('name')
+@function g($key) {
+  @return map-get($settings-gaps, $key);
+}
+
+// Remove the unit of a length
+// @param {Number} $number - Number to remove unit from
+// @return {Number} - Unitless number
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+// Change px to em
+@function em($value) {
+  $base_font: strip-unit($f-base-size);
+  $pixels: strip-unit($value);
+  $output: $pixels / $base_font;
+  @return $output * 1em;
+}
+
+// Change px to rem
+@function rem($value) {
+  $base_font: strip-unit($f-base-size);
+  $pixels: strip-unit($value);
+  $output: $pixels / $base_font;
+  @return $output * 1rem;
+}
+
+// Returns 0 if $value is negative
+@function not-less-than-zero($value) {
+  @return if(strip-unit($value) < 0, 0, $value);
+}
+
+// Return $min if $value is lower
+@function not-less-than($value, $min: 0) {
+  @return if(strip-unit($value) < strip-unit($min), $min, $value);
+}
+
+%clearfix {
+  &::after {
+    display: table;
+
+    content: '';
+    clear: both;
+  }
+}
+
+%visually-hidden {
+  position: absolute;
+
+  padding: 0;
+  margin: -1px;
+
+  width: 1px;
+  height: 1px;
+
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

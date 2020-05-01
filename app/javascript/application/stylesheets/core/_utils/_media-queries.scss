@@ -1,0 +1,29 @@
+@mixin screen($size, $mode: null, $type: min) {
+  $breakpoint: map-get($breakpoints, $size);
+
+  @if $type == 'min' {
+    // $breakpoint: map-get($breakpoints, $size) + 1;
+  }
+
+  @if $mode {
+    @media only screen and ($type + -width: $breakpoint) and (orientation: $mode) {
+      @content;
+    }
+  } @else {
+    @media only screen and ($type + -width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+@mixin screen-beetwen($min-size, $max-size) {
+  @media only screen and (min-width: map-get($breakpoints, $min-size)) and (max-width: map-get($breakpoints, $max-size) - 1) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (pointer: coarse) and (hover: none) {
+    @content;
+  }
+}

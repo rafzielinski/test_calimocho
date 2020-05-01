@@ -1,0 +1,77 @@
+body {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 100vw;
+  height: auto;
+  min-height: 100vh;
+}
+
+.layout__wrapper {
+  @extend %layout__wrapper;
+
+  &--margin-top {
+    @include m('top');
+  }
+}
+
+.layout__body {
+  @extend %layout__body;
+
+  .layout__item {
+    @extend %layout__item;
+
+    &--to-left {
+      @extend %layout__item--to-left;
+    }
+
+    &--to-right {
+      @extend %layout__item--to-right;
+    }
+
+    &--wide {
+      @extend %layout__item--wide;
+
+      &-to-left {
+        @extend %layout__item--wide-to-left;
+      }
+
+      &-to-right {
+        @extend %layout__item--wide-to-right;
+      }
+    }
+
+    &--full-width {
+      @extend %layout__item--full-width;
+
+      &-to-left {
+        @extend %layout__item--full-width-to-left;
+      }
+
+      &-to-right {
+        @extend %layout__item--full-width-to-right;
+      }
+    }
+
+    &--full-screen {
+      @extend %layout__item--full-screen;
+    }
+  }
+
+  @for $i from 1 to 9 {
+    // end number has to be 1 more than number of column lines
+    .layout__item-start {
+      &-#{$i} {
+        @extend %layout__item-start-#{$i};
+      }
+    }
+
+    .layout__item-end {
+      &-#{$i} {
+        @extend %layout__item-end-#{$i};
+      }
+    }
+  }
+}

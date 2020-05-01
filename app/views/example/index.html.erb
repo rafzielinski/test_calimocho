@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, shrink-to-fit=no">
+    <%= render partial: 'layouts/partials/slickr_head' %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <script> 
+      (function(d) {
+        var config = {
+          kitId: 'tci7zzg',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+    </script>
+    <%= stylesheet_pack_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application', defer: true %>
+
+    <%= stylesheet_pack_tag 'example', media: 'all' %>
+  </head>
+  <body class="example">
+    <div class="layout__wrapper example__guides">
+      <div class="layout__body example__guides-body">
+        <div class="layout__item example__guides-item"></div>
+        <div class="layout__item--wide example__guides-item"></div>
+        <div class="layout__item--full-width example__guides-item"></div>
+      </div>
+    </div>
+    <div class="layout__wrapper example__wrapper">
+      <div class="layout__body example__body">
+        <div class="example__hero">
+          <h1>Example</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </div>
+      <div class="layout__body example__body">
+        <div class="layout__item example__grid-title"><h2>Standard layout elements</h2></div>
+        <div class="layout__item example__grid-item">
+          .layout__item <span>content-max-width</span>
+        </div>
+        <div class="layout__item--to-left example__grid-item">
+          .layout__item--to-left
+        </div>
+        <div class="layout__item--to-right example__grid-item">
+          .layout__item--to-right
+        </div>
+        <div class="layout__item--wide example__grid-item">
+          .layout__item--wide <span>inner-max-width</span>
+        </div>
+        <div class="layout__item--wide-to-left example__grid-item">
+          .layout__item--wide-to-left
+        </div>
+        <div class="layout__item--wide-to-right example__grid-item">
+          .layout__item--wide
+        </div>
+        <div class="layout__item--full-width example__grid-item">
+          .layout__item--full-width <span>outer-max-width</span>
+        </div>
+        <div class="layout__item--full-width-to-left example__grid-item">
+          .layout__item--full-width-to-left
+        </div>
+        <div class="layout__item--full-width-to-right example__grid-item">
+          .layout__item--full-width-to-right
+        </div>
+        <div class="layout__item--full-screen example__grid-item">
+          .layout__item--full-screen
+        </div>
+      </div>
+
+      <div class="layout__body example__body">
+        <div class="layout__item example__grid-title"><h2>Custom layout elements</h2></div>
+        <div class="layout__item-start-1 layout__item-end-2 example__grid-item">1 / 2</div>
+        <div class="layout__item-start-1 layout__item-end-3 example__grid-item">1 / 3</div>
+        <div class="layout__item-start-1 layout__item-end-4 example__grid-item">1 / 4</div>
+        <div class="layout__item-start-1 layout__item-end-5 example__grid-item">1 / 5</div>
+        <div class="layout__item-start-1 layout__item-end-6 example__grid-item">1 / 6</div>
+        <div class="layout__item-start-1 layout__item-end-7 example__grid-item">1 / 7</div>
+        <div class="layout__item-start-1 layout__item-end-8 example__grid-item">1 / 8</div>
+
+        <div class="layout__item-start-1 layout__item-end-2 example__grid-item">1 / 2</div>
+        <div class="layout__item-start-2 layout__item-end-3 example__grid-item">2 / 3</div>
+        <div class="layout__item-start-3 layout__item-end-4 example__grid-item">3 / 4</div>
+        <div class="layout__item-start-4 layout__item-end-5 example__grid-item">4 / 5</div>
+        <div class="layout__item-start-5 layout__item-end-6 example__grid-item">5 / 6</div>
+        <div class="layout__item-start-6 layout__item-end-7 example__grid-item">6 / 7</div>
+        <div class="layout__item-start-7 layout__item-end-8 example__grid-item">7 / 8</div>
+
+        <div class="layout__item-start-1 layout__item-end-3 example__grid-item">1 / 3</div>
+        <div class="layout__item-start-3 layout__item-end-5 example__grid-item">3 / 5</div>
+        <div class="layout__item-start-5 layout__item-end-8 example__grid-item">5 / 8</div>
+
+        <div class="layout__item-start-1 layout__item-end-8 example__grid-item">1 / 8</div>
+        <div class="layout__item-start-2 layout__item-end-8 example__grid-item">2 / 8</div>
+        <div class="layout__item-start-3 layout__item-end-8 example__grid-item">3 / 8</div>
+        <div class="layout__item-start-4 layout__item-end-8 example__grid-item">4 / 8</div>
+        <div class="layout__item-start-5 layout__item-end-8 example__grid-item">5 / 8</div>
+        <div class="layout__item-start-6 layout__item-end-8 example__grid-item">6 / 8</div>
+        <div class="layout__item-start-7 layout__item-end-8 example__grid-item">7 / 8</div>
+      </div>
+    
+      <div class="generic-content generic-content-block example__body">
+        <div class="layout__item example__grid-title"><h2>Custom layout elements</h2></div>
+          
+        <h1 class="h1">Lorem ipsum dolor sit amet</h1>
+        
+        <h2 class="h2">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h2>
+        
+        <h3 class="h3">Convallis convallis tellus id interdum velit laoreet id.</h3>
+        
+        <h4 class="h4">In fermentum et sollicitudin</h4>
+        
+        <h5 class="h5">Ac orci phasellus egestas tellus rutrum.</h5>
+        
+        <h6 class="h6">Nam aliquam sem et tortor consequat id.</h6>
+
+        <p class="para">In hac habitasse platea dictumst quisque sagittis purus sit. Vitae congue eu consequat ac felis donec et odio. Viverra maecenas accumsan lacus vel facilisis volutpat. Facilisis sed odio morbi quis commodo odio. Rutrum tellus pellentesque eu tincidunt. Hac habitasse platea dictumst quisque sagittis purus sit.</p> 
+
+        <ul class="ul">
+          <li>Diam vulputate ut pharetra sit amet aliquam id diam.</li>
+          <li>Amet luctus venenatis lectus magna fringilla urna.</li>
+          <li>Morbi enim nunc faucibus a.</li>
+          <li>Senectus et netus et malesuada fames ac turpis.</li>
+        </ul>
+        
+        <p class="para">At imperdiet dui accumsan sit amet nulla facilisi. Venenatis cras sed felis eget velit aliquet.</p>
+        
+        <ol class="ol">
+          <li>Quam lacus suspendisse faucibus interdum posuere.</li>
+          <li>Id volutpat lacus laoreet non curabitur gravida.</li>
+          <li>Amet consectetur</li>
+        </ol>
+        
+        <p class="para">Adipiscing elit duis tristique sollicitudin nibh. Mi proin sed libero enim sed faucibus turpis in. Sodales ut eu sem integer vitae justo eget magna. Duis convallis convallis tellus id interdum velit laoreet id donec.</p>
+        
+        <blockquote class="quote">
+          <p>Lectus quam id leo in vitae turpis massa sed elementum. Suspendisse potenti nullam ac tortor vitae purus faucibus.</p>
+          <cite>Lectus Mauris - Ultrices</cite>
+        </blockquote>
+        
+        <p class="para">Vitae semper quis lectus nulla. Vitae semper quis lectus nulla at volutpat diam ut. Ut pharetra sit amet aliquam. Orci porta non pulvinar neque laoreet suspendisse interdum. Proin nibh nisl condimentum id venenatis a. Volutpat consequat mauris nunc congue nisi. Augue ut lectus arcu bibendum at varius vel pharetra vel. Neque sodales ut etiam sit amet nisl purus in. Placerat vestibulum lectus mauris ultrices. Vitae elementum curabitur vitae nunc sed. Mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor. Sem fringilla ut morbi tincidunt augue. Sit amet facilisis magna etiam tempor orci eu lobortis. Arcu risus quis varius quam quisque. Aliquam ultrices sagittis orci a scelerisque purus. Nunc sed id semper risus in. Viverra adipiscing at in tellus integer feugiat scelerisque varius morbi. Non quam lacus suspendisse faucibus interdum posuere lorem. Ac orci phasellus egestas tellus rutrum tellus pellentesque eu tincidunt. Viverra maecenas accumsan lacus vel facilisis volutpat. Libero volutpat sed cras ornare. Facilisis magna etiam tempor orci eu lobortis elementum nibh tellus pellentesque pulvinar pellentesque.</p>
+      </div>
+    </div>
+  </body>
+</html>
