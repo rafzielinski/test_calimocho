@@ -1,0 +1,9 @@
+// COLOR - helper function
+// ---
+// This function would help you get values out of $settings-colors map.
+//
+// Usage: color('name')
+//
+@function color($key) {
+  @return map-get($settings-colors, $key);
+}

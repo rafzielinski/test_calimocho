@@ -2,7 +2,10 @@
 
 @import '_utils/index';
 
-@import 'settings';
+@import '_settings/index';
+
+@import '_helpers/index';
+
 @import 'variables';
 @import 'skeleton';
 @import 'typography';

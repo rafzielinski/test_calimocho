@@ -1,0 +1,9 @@
+// LAYOUT WIDTH - helper function
+// ---
+// This function would help you get values out of $settings-layout-widths map.
+//
+// Usage: layout-width('name')
+//
+@function layout-width($key) {
+  @return map-get($settings-layout-widths, $key);
+}

@@ -1,0 +1,131 @@
+// FONT SETUP
+
+// FONT BASE SIZE
+// ---
+// Font base is a core value for whole project,
+// apart from font size it's used as a base for other values
+// like layout grid or gaps
+//
+// Value:
+// Number[px]
+//
+$settings-font-base-size: 16px;
+
+// FONT BASE COLOR
+// ---
+//
+$settings-font-base-color: color(black);
+
+$settings-font-primary: 'JetBrains Mono', 'Lato', Arial, Helvetica, sans-serif;
+$settings-font-secondary: 'JetBrains Mono', 'Lato', Arial, Helvetica, sans-serif;
+
+// FONT SETUP - 1st Step
+// ---
+// First step of the font setup uses modularscale-scss to set base font sizes
+//
+// Notes:
+// Font system scale generates:
+// Font sizes, line heights and margins
+// would be calculated based on $settings-font-scale using modularscale
+//
+$settings-font-scale: 1.125;
+
+$modularscale: (
+  base: $settings-font-base-size,
+  ratio: $settings-font-scale,
+);
+
+// FONT SETUP - 2nd Step
+// ---
+// Map of common typography values, used to generate typography styles,
+// it would overwrite values from previous step.
+//
+// Structure:
+// name: (
+//    font-family: Variable, String,
+//    example: font-family: $settings-font-primary,
+//
+//    font-size:* Function: ms(), Number[rem, px],
+//    example: font-size: ms(1),
+//    example of mobile and desktop values: font-size: (ms(1), 2.5rem),
+//
+//    line-height:* Number[em, rem, px],
+//    example: line-height: 1.4em,
+//    example of mobile and desktop values: line-height: (1.5, 2),
+//
+//    font-weight: Number,
+//    example: font-weight: 500,
+//
+//    text-transform: String,
+//    example: text-transform: uppercase,
+//
+//    margin-bottom: Number[em, rem, px],
+//    example: margin-bottom: 1em,
+//
+//    color: Function color(),
+//    example: color: color('white'),
+//
+//    max-width: Function layout-width(), Number[em, rem, px]
+//    example: max-width: layout-width('text-max-width'),
+// ),
+//
+// Notes:
+// * omit or set to false if you don't want to
+//   overwrite modularscale values.
+// ** single or double values for mobile [x] & desktop [y] devices
+//
+$settings-typography: (
+  header1: (),
+  header2: (),
+  header3: (),
+  header4: (),
+  header5: (),
+  header6: (),
+  intro: (),
+  paragraph: (),
+  paragraph-small: (),
+  link: (),
+  unordered-list: (),
+  ul-item: (),
+  ordered-list: (),
+  ol-item: (),
+  quote: (),
+);
+
+// FONT SETUP - 3rd Step
+// ---
+// Additional font styling.
+// This section would NOT overwrite any values from $settings-typography map above
+//
+%settings-header1 {
+}
+%settings-header2 {
+}
+%settings-header3 {
+}
+%settings-header4 {
+}
+%settings-header5 {
+}
+%settings-header6 {
+}
+%settings-intro {
+}
+%settings-paragraph {
+}
+%settings-paragraph-small {
+}
+%settings-link {
+}
+%settings-list {
+}
+%settings-unordered-list {
+}
+%settings-ul-item {
+}
+%settings-ordered-list {
+}
+%settings-ol-item {
+}
+%settings-quote {
+}

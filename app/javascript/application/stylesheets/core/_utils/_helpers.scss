@@ -1,20 +1,20 @@
-// Colour helper function
-// Usage: c('name')
-@function c($key) {
-  @return map-get($settings-colours, $key);
-}
+// // Colour helper function
+// // Usage: color('name')
+// @function color($key) {
+//   @return map-get($settings-colors, $key);
+// }
 
-// Spacing helper function
-// Usage: s('name')
-@function s($key) {
-  @return map-get($settings-spacings, $key);
-}
+// // Spacing helper function
+// // Usage: s('name')
+// @function s($key) {
+//   @return map-get($settings-layout-widths, $key);
+// }
 
-// Gap helper function
-// Usage: g('name')
-@function g($key) {
-  @return map-get($settings-gaps, $key);
-}
+// // Gap helper function
+// // Usage: g('name')
+// @function g($key) {
+//   @return map-get($settings-gaps, $key);
+// }
 
 // Remove the unit of a length
 // @param {Number} $number - Number to remove unit from

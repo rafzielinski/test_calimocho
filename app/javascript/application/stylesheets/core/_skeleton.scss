@@ -27,46 +27,46 @@
   height: auto;
 
   grid-template-columns:
-    0 g(-1) g(-1) minmax(min-content, $mw-content) g(-1) g(-1)
+    0 gap(-1) gap(-1) minmax(min-content, $mw-content) gap(-1) gap(-1)
     0;
 
   @include screen(medium) {
-    $min-content: $mw-content - (g(-1) * 4);
+    $min-content: $mw-content - (gap(-1) * 4);
     $inner-span: not-less-than(($mw-inner - $mw-content) / 2);
-    $outer-span: not-less-than(($mw-outer - $mw-inner) / 2, g(-1));
+    $outer-span: not-less-than(($mw-outer - $mw-inner) / 2, gap(-1));
 
     grid-template-columns:
-      minmax(0, 1fr) minmax(g(-1), $outer-span) minmax(g(-1), $inner-span)
-      minmax($min-content, $mw-content) minmax(g(-1), $inner-span) minmax(
-        g(-1),
+      minmax(0, 1fr) minmax(gap(-1), $outer-span) minmax(gap(-1), $inner-span)
+      minmax($min-content, $mw-content) minmax(gap(-1), $inner-span) minmax(
+        gap(-1),
         $outer-span
       )
       minmax(0, 1fr);
   }
 
   @include screen(large) {
-    $min-content: $mw-content - (g(0) * 4);
+    $min-content: $mw-content - (gap(0) * 4);
     $inner-span: not-less-than(($mw-inner - $mw-content) / 2);
-    $outer-span: not-less-than(($mw-outer - $mw-inner) / 2, g(0));
+    $outer-span: not-less-than(($mw-outer - $mw-inner) / 2, gap(0));
 
     grid-template-columns:
-      minmax(0, 1fr) minmax(g(0), $outer-span) minmax(g(0), $inner-span)
-      minmax($min-content, $mw-content) minmax(g(0), $inner-span) minmax(
-        g(0),
+      minmax(0, 1fr) minmax(gap(0), $outer-span) minmax(gap(0), $inner-span)
+      minmax($min-content, $mw-content) minmax(gap(0), $inner-span) minmax(
+        gap(0),
         $outer-span
       )
       minmax(0, 1fr);
   }
 
   @include screen(xlarge) {
-    $min-content: $mw-content - (g(1) * 4);
+    $min-content: $mw-content - (gap(1) * 4);
     $inner-span: not-less-than(($mw-inner - $mw-content) / 2);
-    $outer-span: not-less-than(($mw-outer - $mw-inner) / 2, g(1));
+    $outer-span: not-less-than(($mw-outer - $mw-inner) / 2, gap(1));
 
     grid-template-columns:
-      minmax(0, 1fr) minmax(g(1), $outer-span) minmax(g(1), $inner-span)
-      minmax($min-content, $mw-content) minmax(g(1), $inner-span) minmax(
-        g(1),
+      minmax(0, 1fr) minmax(gap(1), $outer-span) minmax(gap(1), $inner-span)
+      minmax($min-content, $mw-content) minmax(gap(1), $inner-span) minmax(
+        gap(1),
         $outer-span
       )
       minmax(0, 1fr);
@@ -152,9 +152,9 @@
 // $multiplier -> Number: number by which margins would be multiplied
 // ***
 @mixin margin($direction: 'all', $multiplier: 1) {
-  $margin-small: g(-1) * $multiplier;
-  $margin-medium: g(0) * $multiplier;
-  $margin-large: g(1) * $multiplier;
+  $margin-small: gap(-1) * $multiplier;
+  $margin-medium: gap(0) * $multiplier;
+  $margin-large: gap(1) * $multiplier;
 
   @if ($direction == 'all') {
     margin: $margin-small;
@@ -220,9 +220,9 @@
 // $multiplier -> Number: number by which paddings would be multiplied
 // ***
 @mixin padding($direction: 'all', $multiplier: 1) {
-  $padding-small: g(-1) * $multiplier;
-  $padding-medium: g(0) * $multiplier;
-  $padding-large: g(1) * $multiplier;
+  $padding-small: gap(-1) * $multiplier;
+  $padding-medium: gap(0) * $multiplier;
+  $padding-large: gap(1) * $multiplier;
 
   @if ($direction == 'all') {
     padding: $padding-small;

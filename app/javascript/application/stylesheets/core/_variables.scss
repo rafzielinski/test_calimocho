@@ -10,13 +10,13 @@ $f-base-color: $settings-font-base-color;
 // COLOURS
 // ***
 // Functional colours
-$c-primary: c(blue);
-$c-primary-light: c(blue-light);
-$c-primary-dark: c(blue-dark);
-$c-secondary: c(orange);
+$c-primary: color(blue);
+$c-primary-light: color(blue-light);
+$c-primary-dark: color(blue-dark);
+$c-secondary: color(orange);
 
-$c-black: c(black);
-$c-white: c(white);
+$c-black: color(black);
+$c-white: color(white);
 
 // Grey stack
 $c-grey-5: #111;
@@ -31,11 +31,11 @@ $shadow-level-1: 0 0 1rem 0 fade-out($c-black, 0.5);
 $shadow-level-2: 0 0 3rem 0 fade-out($c-black, 0.7);
 
 // Layout
-$gap: g(0); // 3rem;
-$mw-text: rem(s('text-max-width'));
-$mw-content: rem(s('content-max-width'));
-$mw-inner: rem(s('inner-max-width'));
-$mw-outer: rem(s('outer-max-width'));
+$gap: gap(0); // 3rem;
+$mw-text: rem(layout-width('text-max-width'));
+$mw-content: rem(layout-width('content-max-width'));
+$mw-inner: rem(layout-width('inner-max-width'));
+$mw-outer: rem(layout-width('outer-max-width'));
 
 // Breakpoints
 $breakpoints: (

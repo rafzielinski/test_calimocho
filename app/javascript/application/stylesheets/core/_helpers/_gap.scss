@@ -1,0 +1,11 @@
+// GAP - helper function
+// ---
+// This function would help you get values out of $settings-gaps map.
+//
+// Usage:
+// gap() - returns g(0) as default
+// gap(integer)
+//
+@function gap($key: 0) {
+  @return map-get($settings-gaps, $key);
+}

@@ -1,0 +1,18 @@
+// LAYOUT WIDTHS
+// ---
+// Layout widths are used to generate page skeleton and set width of elements
+//
+// Required: All
+//
+// Structure:
+// name: value[px, rem]
+//
+// Spacing helper function available:
+// Usage: layout-width('name')
+//
+$settings-layout-widths: (
+  text-max-width: 640px,
+  content-max-width: 768px,
+  inner-max-width: 1024px,
+  outer-max-width: 1400px,
+);

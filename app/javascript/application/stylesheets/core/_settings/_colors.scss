@@ -1,0 +1,18 @@
+// COLORS
+// ---
+// That's pretty much self explanatory :)
+//
+// Required: primary, black, white
+//
+// Structure:
+// name: value[hex, rgb, rgba, hsl]
+//
+// Colour helper function available:
+// Usage: color('name')
+//
+$settings-colors: (
+  primary: #23252d,
+  secondary: #ebeb5e,
+  black: #000,
+  white: #fff,
+);
