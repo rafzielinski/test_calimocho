@@ -52,6 +52,7 @@
   $font-family: searchTypographyMap($name, 'font-family');
   $font-size: searchTypographyMap($name, 'font-size');
   $line-height: searchTypographyMap($name, 'line-height');
+  $font-weight: searchTypographyMap($name, 'font-weight');
   $margin-bottom: searchTypographyMap($name, 'margin-bottom');
   $color: searchTypographyMap($name, 'color');
   $max-width: searchTypographyMap($name, 'max-width');
@@ -97,6 +98,9 @@
     }
   }
 
+  @if $font-weight {
+    font-weight: $font-weight;
+  }
   @if $margin-bottom {
     margin-bottom: $margin-bottom;
   }
