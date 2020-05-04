@@ -1,16 +1,16 @@
 {
   "name": "test_calimocho",
-  "private": true,      "husky": {
-        "hooks": {
-          "prepare-commit-msg": "lint-staged",
-          "pre-commit": "lint-staged"
-        }
-      },
-      "lint-staged": {
-        "{app,test}/**/*.{js,es6,jsx,scss,css}": "./node_modules/prettier/bin-prettier.js --write",
-        "{app,test}/**/*.rb": "bundle exec rubocop -a"
-      },
-
+  "private": true,
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "lint-staged",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "{app,test}/**/*.{js,es6,jsx,scss,css}": "./node_modules/prettier/bin-prettier.js --write",
+    "{app,test}/**/*.rb": "bundle exec rubocop -a"
+  },
   "dependencies": {
     "@rails/webpacker": "3.5",
     "activestorage": "^5.2.4-2",
