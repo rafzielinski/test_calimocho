@@ -75,3 +75,7 @@ body {
     }
   }
 }
+
+.layout__item.layout-test {
+  @include layout-item($resize: gap(2, true));
+}

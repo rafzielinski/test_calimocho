@@ -27,7 +27,12 @@
   height: auto;
 
   grid-template-columns:
-    0 gap(-1) gap(-1) minmax(min-content, $mw-content) gap(-1) gap(-1)
+    0
+    gap(-1)
+    gap(-1)
+    minmax(min-content, $mw-content)
+    gap(-1)
+    gap(-1)
     0;
 
   @include screen(medium) {
@@ -36,11 +41,12 @@
     $outer-span: not-less-than(($mw-outer - $mw-inner) / 2, gap(-1));
 
     grid-template-columns:
-      minmax(0, 1fr) minmax(gap(-1), $outer-span) minmax(gap(-1), $inner-span)
-      minmax($min-content, $mw-content) minmax(gap(-1), $inner-span) minmax(
-        gap(-1),
-        $outer-span
-      )
+      minmax(0, 1fr)
+      minmax(gap(-1), $outer-span)
+      minmax(gap(-1), $inner-span)
+      minmax($min-content, $mw-content)
+      minmax(gap(-1), $inner-span)
+      minmax(gap(-1), $outer-span)
       minmax(0, 1fr);
   }
 
@@ -50,11 +56,12 @@
     $outer-span: not-less-than(($mw-outer - $mw-inner) / 2, gap(0));
 
     grid-template-columns:
-      minmax(0, 1fr) minmax(gap(0), $outer-span) minmax(gap(0), $inner-span)
-      minmax($min-content, $mw-content) minmax(gap(0), $inner-span) minmax(
-        gap(0),
-        $outer-span
-      )
+      minmax(0, 1fr)
+      minmax(gap(0), $outer-span)
+      minmax(gap(0), $inner-span)
+      minmax($min-content, $mw-content)
+      minmax(gap(0), $inner-span)
+      minmax(gap(0), $outer-span)
       minmax(0, 1fr);
   }
 
@@ -64,11 +71,12 @@
     $outer-span: not-less-than(($mw-outer - $mw-inner) / 2, gap(1));
 
     grid-template-columns:
-      minmax(0, 1fr) minmax(gap(1), $outer-span) minmax(gap(1), $inner-span)
-      minmax($min-content, $mw-content) minmax(gap(1), $inner-span) minmax(
-        gap(1),
-        $outer-span
-      )
+      minmax(0, 1fr)
+      minmax(gap(1), $outer-span)
+      minmax(gap(1), $inner-span)
+      minmax($min-content, $mw-content)
+      minmax(gap(1), $inner-span)
+      minmax(gap(1), $outer-span)
       minmax(0, 1fr);
   }
 
@@ -81,51 +89,106 @@
   }
 }
 
+@mixin layout-item($size: false, $align: false, $resize: false) {
+  @if $size != false and $size != 'wide' and $size != 'full-width' and $size != 'full-screen' {
+    @error "Property $size must be either 'wide', 'full-width', 'full-screen' or false.";
+  }
+  @if $align != false and $align != left and $align != right {
+    @error "Property $align must be either left, right or false.";
+  }
+  @if $resize != false and type-of($resize) != 'number' and unitless($resize) {
+    @error 'Property $resize (`#{$resize}`) must be a number with valid CSS unit.';
+  }
+
+  $width: 100%;
+
+  // Default column assignment
+  $column-start: 4;
+  $column-end: 5;
+
+  // Generate initial column assignment based on $size property
+  @if $size == 'full-screen' {
+    $column-start: 1;
+    $column-end: 8;
+  } @else if $size == 'full-width' {
+    $column-start: 2;
+    $column-end: 7;
+  } @else if $size == 'wide' {
+    $column-start: 3;
+    $column-end: 6;
+  }
+
+  // Tweak column assignment based on $align property
+  @if $size != 'full-screen' {
+    @if $align == left {
+      $column-start: $column-start - 1;
+    }
+    @if $align == right {
+      $column-end: $column-end + 1;
+    }
+  }
+
+  // Update elements' width based on $resize property
+  @if $resize {
+    margin-left: -$resize;
+    margin-right: -$resize;
+
+    $width: calc(100% + #{$resize * 2});
+  }
+
+  width: $width;
+  grid-column: #{$column-start} / #{$column-end};
+}
+
+@mixin layout-item-custom($column-start: 4, $column-end: 5) {
+  grid-column: #{$column-start} / #{$column-end};
+  width: 100%;
+}
+
 %layout {
   &__item {
-    width: 100%;
+    // width: 100%;
   }
 
   &__item {
-    grid-column: 4 / 5;
+    @include layout-item();
 
     &--to-left {
-      grid-column: 2 / 5;
+      @include layout-item($align: left);
     }
 
     &--to-right {
-      grid-column: 4 / 7;
+      @include layout-item($align: right);
     }
 
     &--wide {
-      grid-column: 3 / 6;
+      @include layout-item($size: 'wide');
     }
 
     &--wide-to-left {
-      grid-column: 2 / 6;
+      @include layout-item($size: 'wide', $align: left);
     }
 
     &--wide-to-right {
-      grid-column: 3 / 7;
+      @include layout-item($size: 'wide', $align: right);
     }
 
     &--full-width {
-      grid-column: 2 / 7;
+      @include layout-item($size: 'full-width');
     }
 
     &--full-width-to-left {
-      grid-column: 1 / 7;
+      @include layout-item($size: 'full-width', $align: left);
     }
 
     &--full-width-to-right {
-      grid-column: 2 / 8;
+      @include layout-item($size: 'full-width', $align: right);
     }
 
     &--full-screen {
-      grid-column: 1 / 8;
+      @include layout-item($size: 'full-screen');
     }
   }
-
   @for $i from 1 to 9 {
     // end number has to be 1 more than number of column lines
     &__item-start {

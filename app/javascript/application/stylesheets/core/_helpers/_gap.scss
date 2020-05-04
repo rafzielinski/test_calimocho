@@ -2,10 +2,18 @@
 // ---
 // This function would help you get values out of $settings-gaps map.
 //
+// Options:
+// $key: Integer - represents position of value in $settings-gaps
+// $negative: Boolean - return value as negative
+//
 // Usage:
 // gap() - returns g(0) as default
-// gap(integer)
+// gap(-1)
+// gap(2, true)
 //
-@function gap($key: 0) {
+@function gap($key: 0, $negative: false) {
+  @if $negative {
+    @return map-get($settings-gaps, $key) * -1;
+  }
   @return map-get($settings-gaps, $key);
 }

@@ -1,0 +1,17 @@
+@mixin new-margin($base: 0, $direction: 'all', $responsive: true) {
+  @debug gap($base);
+
+  @if $responsive and gap($base + 1) {
+    @debug 'YAY!';
+  } @else {
+    @debug 'NAY :c';
+  }
+
+  margin: gap($base);
+}
+
+// .test {
+//   @include new-margin();
+//   @include new-margin(1);
+//   @include new-margin(2);
+// }
