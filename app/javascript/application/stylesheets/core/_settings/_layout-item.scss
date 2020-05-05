@@ -1,0 +1,66 @@
+@mixin layout-item($size: false, $align: false, $resize: false) {
+  @if (
+    $size !=
+      false and
+      $size !=
+      'wide' and
+      $size !=
+      'full-width' and
+      $size !=
+      'full-screen'
+  ) {
+    @error "Property $size must be either 'wide', 'full-width', 'full-screen' or false.";
+  }
+  @if ($align != false and $align != left and $align != right) {
+    @error "Property $align must be either left, right or false.";
+  }
+  @if (
+    $resize != false and type-of($resize) != 'number' and unitless($resize)
+  ) {
+    @error 'Property $resize (`#{$resize}`) must be a number with valid CSS unit.';
+  }
+
+  $width: 100%;
+
+  // Default column assignment
+  $column-start: 4;
+  $column-end: 5;
+
+  // Generate initial column assignment based on $size property
+  @if $size == 'full-screen' {
+    $column-start: 1;
+    $column-end: 8;
+  } @else if $size == 'full-width' {
+    $column-start: 2;
+    $column-end: 7;
+  } @else if $size == 'wide' {
+    $column-start: 3;
+    $column-end: 6;
+  }
+
+  // Tweak column assignment based on $align property
+  @if $size != 'full-screen' {
+    @if $align == left {
+      $column-start: $column-start - 1;
+    }
+    @if $align == right {
+      $column-end: $column-end + 1;
+    }
+  }
+
+  // Update elements' width based on $resize property
+  @if $resize {
+    margin-left: -$resize;
+    margin-right: -$resize;
+
+    $width: calc(100% + #{$resize * 2});
+  }
+
+  width: $width;
+  grid-column: #{$column-start} / #{$column-end};
+}
+
+@mixin layout-item-custom($column-start: 4, $column-end: 5) {
+  grid-column: #{$column-start} / #{$column-end};
+  width: 100%;
+}
