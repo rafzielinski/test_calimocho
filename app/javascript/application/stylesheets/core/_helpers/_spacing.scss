@@ -1,0 +1,102 @@
+// SPACINGS - helper mixin
+// ---
+// This mixin would generate responsive margin or padding.
+//
+// Options:
+// $type: Spacing type, should be either margin or padding,
+// $base: Default margin size,
+// $sizes: Margin sizes list, should contain the same number of items as $screens,
+// $screens: Breakpoints keys list from $breakpoints map.
+//
+// Usage:
+// @include spacing(margin) - uses default values
+//
+@mixin spacing(
+  $type,
+  $base: gap(-1),
+  $sizes: gap(0) gap(1),
+  $screens: small medium,
+  $directions: top right bottom left
+) {
+  $sizes_length: length($sizes);
+  $screens_length: length($screens);
+  $directions_check: top right bottom left;
+
+  @if (($type == margin) or ($type == padding)) {
+    @if $base {
+      @if $sizes_length == $screens_length {
+        @each $direction in $directions {
+          // $directions values check
+          $i: index($directions_check, $direction);
+          @if $i {
+            #{$type}-#{$direction}: $base;
+          } @else {
+            @error 'Argument $directions accept only following values in any combination: top right bottom left.';
+          }
+        }
+
+        @if $screens {
+          @each $screen in $screens {
+            @if map-get($breakpoints, $screen) {
+              @include screen($screen) {
+                @each $direction in $directions {
+                  #{$type}-#{$direction}: nth($sizes, index($screens, $screen));
+                }
+              }
+            } @else {
+              @error 'Couldn\'t find matching key in $breakpoints map for `#{$screen}`';
+            }
+          }
+        }
+      } @else {
+        @error 'Arguments $sizes and $screens should contain the same number of values or be false.';
+      }
+    } @else {
+      @error 'Argument $base is required.';
+    }
+  } @else {
+    @error 'Invalid $type attribute. Please use \'margin\' or \'padding\'';
+  }
+}
+
+// MARGIN - spacing mixin extension
+// ---
+// This mixin would generate responsive margins.
+//
+// Options:
+// $base: Default margin size,
+// $sizes: Margin sizes list, should contain the same number of items as $screens,
+// $screens: Breakpoints keys list from $breakpoints map.
+//
+// Usage:
+// @include margin() - uses default values
+//
+@mixin margin(
+  $base: gap(-1),
+  $sizes: gap(0) gap(1) gap(2),
+  $screens: small medium large,
+  $directions: top right bottom left
+) {
+  @include spacing(margin, $base, $sizes, $screens, $directions);
+}
+
+// PADDING - spacing mixin extension
+// ---
+// This mixin would generate responsive paddings.
+//
+// Options:
+// $base: Default padding size,
+// $sizes: Padding sizes list, should contain the same number of items as $screens,
+// $screens: Breakpoints keys list from $breakpoints map.
+//
+// Usage:
+// @include padding() - uses default values
+//
+@mixin padding(
+  $base: gap(-1),
+  $sizes: gap(0) gap(1) gap(2),
+  $screens: small medium large,
+  $directions: top right bottom left
+) {
+  @include spacing(padding, $base, $sizes, $screens, $directions);
+}

@@ -8,15 +8,21 @@ $c-example-white: white;
 $c-example-grey: #d4d4d4;
 
 .example {
-  --background-color: #{lighten($c-example-primary, 70%)};
+  --page-background-color: #{lighten($c-example-primary, 70%)};
+  --element-background-color: #{$c-example-primary};
+  --element-light-background-color: #{lighten($c-example-primary, 75%)};
+  --border-color: #{$c-example-grey};
   --text-color: #{$c-example-primary};
+  --highlight-color: #{$c-example-secondary};
 
-  background-color: var(--background-color, #{$c-example-white});
+  --label-background: #{darken($c-example-grey, 5%)};
+
+  background-color: var(--page-background-color, #{$c-example-white});
 
   font-family: 'JetBrains Mono', 'Lato', Arial, Helvetica, sans-serif;
 
   &--dark {
-    --background-color: #{lighten($c-example-primary, 4%)};
+    --page-background-color: #{lighten($c-example-primary, 4%)};
     --text-color: #{$c-example-white};
   }
 
@@ -29,7 +35,7 @@ $c-example-grey: #d4d4d4;
 
     position: relative;
 
-    @include m('vertical', 3);
+    @include margin(gap(1), gap(2), medium, top bottom);
 
     width: 100%;
 
@@ -83,7 +89,7 @@ $c-example-grey: #d4d4d4;
 
     &-item {
       grid-row: 1;
-      box-shadow: 0 0 0 1px $c-example-grey;
+      box-shadow: 0 0 0 1px var(--border-color);
     }
   }
 
@@ -92,15 +98,13 @@ $c-example-grey: #d4d4d4;
   }
 
   &__body {
-    @include p('vertical', 3);
+    @include padding(gap(1), gap(2), medium, top bottom);
 
     &--white {
-      --background-color: #{$c-example-white};
-      background-color: $c-example-white;
+      --page-background-color: #{$c-example-white};
+      background-color: var(--page-background-color);
     }
-  }
 
-  &__grid {
     &-title {
       display: flex;
       align-items: center;
@@ -109,7 +113,7 @@ $c-example-grey: #d4d4d4;
       position: relative;
       z-index: 1;
 
-      @include m('bottom', 6);
+      @include margin(gap(3), false, false, bottom);
 
       h2 {
         display: block;
@@ -118,7 +122,7 @@ $c-example-grey: #d4d4d4;
 
         width: auto;
 
-        background-color: var(--background-color, #{$c-example-white});
+        background-color: var(--page-background-color, #{$c-example-white});
 
         font-family: inherit;
         font-size: 0.85rem;
@@ -139,16 +143,15 @@ $c-example-grey: #d4d4d4;
           width: 100vw;
           height: 1px;
 
-          background: var(
-            --text-color,
-            #{$c-example-black}
-          ); // $c-example-grey-2;
+          background: var(--text-color, #{$c-example-black});
 
           content: '';
         }
       }
     }
+  }
 
+  &__grid {
     &-item {
       display: flex;
       flex-flow: column nowrap;
@@ -156,18 +159,18 @@ $c-example-grey: #d4d4d4;
       justify-content: center;
 
       padding: 0.25rem;
-      @include m('bottom');
+      @include margin(gap(0), gap(1), medium, bottom);
 
       min-height: 5rem;
 
-      background: $c-example-primary;
+      background: var(--element-background-color);
       box-shadow: $shadow-level-1, 0 0 0 1px $c-example-white;
 
       font-size: rem(10);
       font-weight: 600;
       line-height: 1.5;
       letter-spacing: 0.05em;
-      color: $c-example-secondary;
+      color: var(--highlight-color);
       text-align: center;
 
       &:last-child {
@@ -177,11 +180,90 @@ $c-example-grey: #d4d4d4;
       span {
         font-weight: 300;
         text-transform: none;
-        color: $c-example-grey;
+        color: var(--border-color);
 
         &::before {
           content: '// ';
         }
+      }
+    }
+  }
+
+  &__listing {
+    @include layout-item();
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  &__spacing {
+    border: 1px dashed var(--border-color);
+
+    &-margin {
+    }
+
+    &-padding {
+      background-color: var(--border-color);
+    }
+
+    &-inner {
+      width: 5rem;
+      height: 5rem;
+
+      background-color: var(--element-background-color);
+    }
+  }
+
+  &__spacing,
+  &__spacing-padding {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 50%;
+
+      transform: translate(-50%, -50%);
+
+      padding: 0.25rem 1rem;
+
+      background-color: var(--label-background);
+      box-shadow: $shadow-level-0;
+
+      font-size: 0.85rem;
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--text-color);
+    }
+  }
+
+  &__spacing::before {
+    content: 'Margin';
+  }
+  &__spacing-padding::before {
+    content: 'Padding';
+  }
+
+  &__spacing {
+    @include margin(gap(1), gap(2), large);
+
+    &-margin {
+      @include margin();
+
+      .spacing--variant-1 & {
+        @include margin(gap(2), gap(3), medium, bottom);
+        @include margin(gap(1), gap(2), large, top);
+      }
+    }
+
+    &-padding {
+      @include padding();
+
+      .spacing--variant-1 & {
+        @include padding(gap(-1), gap(0), medium, top bottom);
+        @include padding(gap(0), gap(2), large, left right);
       }
     }
   }

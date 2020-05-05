@@ -13,7 +13,8 @@ body {
   @extend %layout__wrapper;
 
   &--margin-top {
-    @include m('top');
+    // @include m('top');
+    @include margin($directions: top);
   }
 }
 
@@ -74,8 +75,4 @@ body {
       }
     }
   }
-}
-
-.layout__item.layout-test {
-  @include layout-item($resize: gap(2, true));
 }

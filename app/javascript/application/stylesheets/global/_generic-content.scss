@@ -136,7 +136,8 @@
   blockquote,
   img,
   .widget {
-    @include m('vertical', 0.5);
+    // @include m('vertical', 0.5);
+    @include margin(0.5em, 1em 2em, medium large, top bottom);
   }
 
   blockquote p {
@@ -146,7 +147,8 @@
   blockquote cite {
     display: inline-block;
 
-    @include m('top', -0.25);
+    // @include m('top', -0.25);
+    @include margin(0.5em, 1em, medium, top);
   }
 
   h1,

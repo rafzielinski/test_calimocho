@@ -6,9 +6,6 @@ $f-base-size: $settings-font-base-size;
 $f-base-line-height: 1.4;
 $f-base-color: $settings-font-base-color;
 
-// ***
-// COLOURS
-// ***
 // Functional colours
 $c-primary: color(blue);
 $c-primary-light: color(blue-light);
@@ -39,7 +36,8 @@ $mw-outer: rem(layout-width('outer-max-width'));
 
 // Breakpoints
 $breakpoints: (
-  small: rem(425px),
+  xsmall: rem(400px),
+  small: rem(600px),
   medium: $mw-content,
   // 768px,
     large: $mw-inner,
@@ -48,8 +46,3 @@ $breakpoints: (
   // 1280px,
     xxlarge: rem(1500px)
 );
-
-// $test: unitless-rem(40);
-$test2: $mw-text;
-
-// @debug 'tete', $test2, 10rem - $test2;
