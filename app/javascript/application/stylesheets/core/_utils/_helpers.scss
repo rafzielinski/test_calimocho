@@ -29,7 +29,7 @@
 
 // Change px to em
 @function em($value) {
-  $base_font: strip-unit($f-base-size);
+  $base_font: strip-unit($settings-font-base-size);
   $pixels: strip-unit($value);
   $output: $pixels / $base_font;
   @return $output * 1em;
@@ -37,7 +37,7 @@
 
 // Change px to rem
 @function rem($value) {
-  $base_font: strip-unit($f-base-size);
+  $base_font: strip-unit($settings-font-base-size);
   $pixels: strip-unit($value);
   $output: $pixels / $base_font;
   @return $output * 1rem;

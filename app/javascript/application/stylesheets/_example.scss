@@ -1,29 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:100,300,400,400i,700,900&display=swap');
 
-// Variables
-$c-example-primary: #23252d;
-$c-example-secondary: #ebeb5e;
-$c-example-black: black;
-$c-example-white: white;
-$c-example-grey: #d4d4d4;
-
 .example {
-  --page-background-color: #{lighten($c-example-primary, 70%)};
-  --element-background-color: #{$c-example-primary};
-  --element-light-background-color: #{lighten($c-example-primary, 75%)};
-  --border-color: #{$c-example-grey};
-  --text-color: #{$c-example-primary};
-  --highlight-color: #{$c-example-secondary};
+  --example--c--background-primary: var(--c--background-primary);
+  --example--c--background-secondary: var(--c--background-secondary);
 
-  --label-background: #{darken($c-example-grey, 5%)};
+  --example--c--border-primary: #{grey(1)};
+  --example--c--border-secondary: #{color(blue-light)};
 
-  background-color: var(--page-background-color, #{$c-example-white});
+  --example--c--text-primary: var(--c--text-primary);
+  --example--c--text-secondary: #{color(blue-light)};
+  --example--c--highlight: var(--c--highlight);
 
-  font-family: 'JetBrains Mono', 'Lato', Arial, Helvetica, sans-serif;
+  --example--c--background-label: #{grey(1)};
+
+  background-color: var(--example--c--background-primary);
 
   &--dark {
-    --page-background-color: #{lighten($c-example-primary, 4%)};
-    --text-color: #{$c-example-white};
+    
   }
 
   &__hero {
@@ -52,7 +45,7 @@ $c-example-grey: #d4d4d4;
       font-weight: 600;
       line-height: 1.25;
       text-align: left;
-      color: var(--text-color, #{$c-example-black});
+      color: var(--example--c--text-secondary);
     }
 
     p {
@@ -64,7 +57,7 @@ $c-example-grey: #d4d4d4;
       font-weight: 400;
       line-height: 2;
       text-align: left;
-      color: var(--text-color, #{$c-example-black});
+      color: var(--example--c--text-primary);
     }
   }
 
@@ -89,7 +82,7 @@ $c-example-grey: #d4d4d4;
 
     &-item {
       grid-row: 1;
-      box-shadow: 0 0 0 1px var(--border-color);
+      box-shadow: 0 0 0 1px var(--example--c--border-primary);
     }
   }
 
@@ -99,11 +92,6 @@ $c-example-grey: #d4d4d4;
 
   &__body {
     @include padding(gap(1), gap(2), medium, top bottom);
-
-    &--white {
-      --page-background-color: #{$c-example-white};
-      background-color: var(--page-background-color);
-    }
 
     &-title {
       display: flex;
@@ -122,7 +110,7 @@ $c-example-grey: #d4d4d4;
 
         width: auto;
 
-        background-color: var(--page-background-color, #{$c-example-white});
+        background-color: var(--example--c--background-primary);
 
         font-family: inherit;
         font-size: 0.85rem;
@@ -130,7 +118,7 @@ $c-example-grey: #d4d4d4;
         line-height: 1;
         text-align: center;
         text-transform: uppercase;
-        color: var(--text-color);
+        color: var(--example--c--text-primary);
 
         &::before {
           position: absolute;
@@ -143,7 +131,7 @@ $c-example-grey: #d4d4d4;
           width: 100vw;
           height: 1px;
 
-          background: var(--text-color, #{$c-example-black});
+          background: var(--example--c--text-primary);
 
           content: '';
         }
@@ -163,14 +151,14 @@ $c-example-grey: #d4d4d4;
 
       min-height: 5rem;
 
-      background: var(--element-background-color);
-      box-shadow: $shadow-level-1, 0 0 0 1px $c-example-white;
+      background: var(--example--c--background-secondary);
+      box-shadow: var(--shadow-level-1), 0 0 0 1px var(--example--c--border-primary);
 
       font-size: rem(10);
       font-weight: 600;
       line-height: 1.5;
       letter-spacing: 0.05em;
-      color: var(--highlight-color);
+      color: var(--example--c--highlight);
       text-align: center;
 
       &:last-child {
@@ -180,7 +168,7 @@ $c-example-grey: #d4d4d4;
       span {
         font-weight: 300;
         text-transform: none;
-        color: var(--border-color);
+        color: var(--example--c--text-secondary);
 
         &::before {
           content: '// ';
@@ -194,25 +182,27 @@ $c-example-grey: #d4d4d4;
 
     display: flex;
     flex-flow: column nowrap;
-    align-items: flex-start;
-    justify-content: center;
+    align-items: center;
+    justify-content: flex-start;
   }
 
   &__spacing {
-    border: 1px dashed var(--border-color);
+    border: 1px dashed var(--example--c--border-secondary);
 
     &-margin {
     }
 
     &-padding {
-      background-color: var(--border-color);
+      background-color: var(--example--c--border-secondary);
     }
 
     &-inner {
       width: 5rem;
       height: 5rem;
 
-      background-color: var(--element-background-color);
+      background-color: var(--example--c--background-secondary);
+
+      box-shadow: var(--shadow-level-1);
     }
   }
 
@@ -229,13 +219,13 @@ $c-example-grey: #d4d4d4;
 
       padding: 0.25rem 1rem;
 
-      background-color: var(--label-background);
-      box-shadow: $shadow-level-0;
+      background-color: var(--example--c--background-label);
+      box-shadow: var(--shadow-level-0);
 
       font-size: 0.85rem;
       line-height: 1;
       text-transform: uppercase;
-      color: var(--text-color);
+      color: var(--example--c--text-primary);
     }
   }
 

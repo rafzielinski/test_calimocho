@@ -1,14 +1,5 @@
 @mixin layout-item($size: false, $align: false, $resize: false) {
-  @if (
-    $size !=
-      false and
-      $size !=
-      'wide' and
-      $size !=
-      'full-width' and
-      $size !=
-      'full-screen'
-  ) {
+  @if ($size != false and $size != 'wide' and $size != 'full-width' and $size != 'full-screen') {
     @error "Property $size must be either 'wide', 'full-width', 'full-screen' or false.";
   }
   @if ($align != false and $align != left and $align != right) {

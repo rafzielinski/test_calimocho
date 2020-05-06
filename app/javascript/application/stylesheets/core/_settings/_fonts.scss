@@ -1,5 +1,17 @@
 // FONT SETUP
 
+// FONT-FAMILY
+// ---
+//
+// Font-families used in project
+// You can add more fonts if needed, just follow naming convention.
+// example: tertiary: "'Times New Roman', serif";
+//
+$settings-font-family: (
+  primary: "'JetBrains Mono', 'Lato', Arial, Helvetica, sans-serif",
+  secondary: "'JetBrains Mono', 'Lato', Arial, Helvetica, sans-serif"
+);
+
 // FONT BASE SIZE
 // ---
 // Font base is a core value for whole project,
@@ -14,10 +26,17 @@ $settings-font-base-size: 16px;
 // FONT BASE COLOR
 // ---
 //
-$settings-font-base-color: color(black);
+// Base text colors
+// You can add more colors if needed, just follow naming convention.
+// example: tertiary: color(black);
+//
 
-$settings-font-primary: 'JetBrains Mono', 'Lato', Arial, Helvetica, sans-serif;
-$settings-font-secondary: 'JetBrains Mono', 'Lato', Arial, Helvetica, sans-serif;
+$settings-font-color: (
+  primary: color(blue-dark),
+  secondary: color(blue),
+  tertiary: grey(blue-light),
+  highlight: color(yellow)
+);
 
 // FONT SETUP - 1st Step
 // ---
@@ -42,16 +61,16 @@ $modularscale: (
 //
 // Structure:
 // name: (
-//    font-family: Variable, String,
-//    example: font-family: $settings-font-primary,
+//    font-family: Font-family key from $settings-font-family,
+//    example: font-family: secondary,
 //
 //    font-size:* Function: ms(), Number[rem, px],
 //    example: font-size: ms(1),
-//    example of mobile and desktop values: font-size: (ms(1), 2.5rem),
+//    example: font-size: (ms(2), 2.5rem) - to set mobile and desktop values,
 //
 //    line-height:* Number[em, rem, px],
-//    example: line-height: 1.4em,
-//    example of mobile and desktop values: line-height: (1.5, 2),
+//    example: line-height: 1.4,
+//    example: line-height: (1.5, 2rem) - to set mobile and desktop values,
 //
 //    font-weight: Number,
 //    example: font-weight: 500,
@@ -62,8 +81,9 @@ $modularscale: (
 //    margin-bottom: Number[em, rem, px],
 //    example: margin-bottom: 1em,
 //
-//    color: Function color(),
-//    example: color: color('white'),
+//    color: Color key from $settings-font-color map,
+//    example: color: primary, - uses $settings-font-color > primary
+//    example: color: highlight, - uses $settings-font-color > highlight
 //
 //    max-width: Function layout-width(), Number[em, rem, px]
 //    example: max-width: layout-width('text-max-width'),
@@ -97,35 +117,19 @@ $settings-typography: (
 // Additional font styling.
 // This section would NOT overwrite any values from $settings-typography map above
 //
-%settings-header1 {
-}
-%settings-header2 {
-}
-%settings-header3 {
-}
-%settings-header4 {
-}
-%settings-header5 {
-}
-%settings-header6 {
-}
-%settings-intro {
-}
-%settings-paragraph {
-}
-%settings-paragraph-small {
-}
-%settings-link {
-}
-%settings-list {
-}
-%settings-unordered-list {
-}
-%settings-ul-item {
-}
-%settings-ordered-list {
-}
-%settings-ol-item {
-}
-%settings-quote {
-}
+%settings-header1 {}
+%settings-header2 {}
+%settings-header3 {}
+%settings-header4 {}
+%settings-header5 {}
+%settings-header6 {}
+%settings-intro {}
+%settings-paragraph {}
+%settings-paragraph-small {}
+%settings-link {}
+%settings-list {}
+%settings-unordered-list {}
+%settings-ul-item {}
+%settings-ordered-list {}
+%settings-ol-item {}
+%settings-quote {}

@@ -11,4 +11,10 @@
 // Helper function available:
 // Usage: gap() or gap(integer)
 //
-$settings-gaps: (-1: 1rem, 0: 2rem, 1: 3rem, 2: 6rem, 3: 10rem);
+$settings-gaps: (
+  -1: 1rem, 
+  0: 2rem, 
+  1: 4rem, 
+  2: 6rem, 
+  3: 10rem
+);

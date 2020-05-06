@@ -1,6 +1,7 @@
 .generic-content {
   h1 {
     @extend %h1;
+    color: var(--c--text-primary);
   }
   h2 {
     @extend %h2;
@@ -77,26 +78,26 @@
 
     background-color: transparent;
 
-    border: 0.125em solid $c-secondary;
+    border: 0.125em solid var(--c--text-secondary);
 
     text-decoration: none;
     appearance: none;
 
-    font-family: $f-secondary;
+    font-family: var(--f--font-family-secondary);
     font-size: 0.85rem;
     line-height: 1;
     font-weight: 700;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     text-decoration: none;
-    color: $c-primary;
+    color: var(--c--text-secondary);
     white-space: nowrap;
 
     transition: color 0.15s ease-in-out;
 
     &:focus,
     &:hover {
-      color: $c-secondary;
+      color: var(--c--text-primary);
     }
   }
 }

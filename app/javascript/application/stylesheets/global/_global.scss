@@ -7,7 +7,7 @@
 body {
   position: relative;
 
-  background-color: $c-white;
+  background-color: var(--c--background-primary);
 
   overflow: hidden;
   overflow-y: auto;

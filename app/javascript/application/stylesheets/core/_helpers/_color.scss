@@ -7,3 +7,13 @@
 @function color($key) {
   @return map-get($settings-colors, $key);
 }
+
+// GREY - helper function
+// ---
+// This function would help you get values out of $settings-grey-scale map.
+//
+// Usage: grey('name')
+//
+@function grey($key) {
+  @return map-get($settings-grey-scale, $key);
+}

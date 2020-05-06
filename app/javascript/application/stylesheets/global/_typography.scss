@@ -1,10 +1,10 @@
 // Add your font import here
 
 body {
-  font-family: $f-primary;
-  font-size: $f-base-size;
-  line-height: 1.4;
-  color: $c-black;
+  font-family: var(--f--font-family-primary);
+  font-size: var(--f--font-size);
+  line-height: var(--f--line-height);
+  color: var(--c--text-primary);
 }
 
 .h1,

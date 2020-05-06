@@ -1,34 +1,29 @@
-// Font
-$f-primary: $settings-font-primary;
-$f-secondary: $settings-font-secondary;
+:root {
+  // Font
+  --f--font-family-primary: #{font-family(primary)};
+  --f--font-family-secondary: #{font-family(secondary)};
+  --f--font-size: #{$settings-font-base-size};
+  --f--line-height: 1.4;
 
-$f-base-size: $settings-font-base-size;
-$f-base-line-height: 1.4;
-$f-base-color: $settings-font-base-color;
+  // Color
+  --c--background-primary: #{color(white)};
+  --c--background-secondary: #{color(blue)};
+  
+  --c--highlight: #{color(yellow)};
 
-// Functional colours
-$c-primary: color(blue);
-$c-primary-light: color(blue-light);
-$c-primary-dark: color(blue-dark);
-$c-secondary: color(orange);
+  --c--text-primary: #{font-color(primary)}; // #{map-get($settings-font-color, primary)};
+  --c--text-secondary: #{font-color(secondary)};
+  --c--text-tertiary: #{font-color(tertiary)};
+  --c--text-highlight: #{font-color(highlight)};
 
-$c-black: color(black);
-$c-white: color(white);
+  --c--border-primary: #{grey(2)};
 
-// Grey stack
-$c-grey-5: #111;
-$c-grey-4: #444;
-$c-grey-3: #666;
-$c-grey-2: #888;
-$c-grey-1: #f0f0f0;
-
-// Shadows
-$shadow-level-0: 0 0 0.5rem 0 fade-out($c-black, 0.7);
-$shadow-level-1: 0 0 1rem 0 fade-out($c-black, 0.5);
-$shadow-level-2: 0 0 3rem 0 fade-out($c-black, 0.7);
+  --shadow-level-0: #{0 0 0.5rem 0 fade-out(color(black), 0.7)};
+  --shadow-level-1: #{0 0 1rem 0 fade-out(color(black), 0.5)};
+  --shadow-level-2: #{0 0 3rem 0 fade-out(color(black), 0.7)};
+}
 
 // Layout
-$gap: gap(0); // 3rem;
 $mw-text: rem(layout-width('text-max-width'));
 $mw-content: rem(layout-width('content-max-width'));
 $mw-inner: rem(layout-width('inner-max-width'));
@@ -39,10 +34,7 @@ $breakpoints: (
   xsmall: rem(400px),
   small: rem(600px),
   medium: $mw-content,
-  // 768px,
-    large: $mw-inner,
-  // 1024px,
-    xlarge: $mw-outer,
-  // 1280px,
-    xxlarge: rem(1500px)
+  large: $mw-inner,
+  xlarge: $mw-outer,
+  xxlarge: rem(1500px)
 );

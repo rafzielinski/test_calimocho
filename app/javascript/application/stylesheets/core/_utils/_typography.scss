@@ -15,7 +15,7 @@
 
   @if $settings-font-scale > 1 {
     @if $header {
-      font-family: $settings-font-secondary;
+      font-family: font-family(secondary);
       font-size: map-get($default-font-sizes, $name);
       line-height: 1.125;
 
@@ -59,9 +59,9 @@
   $text-transform: searchTypographyMap($name, 'text-transform');
 
   @if $font-family {
-    font-family: $font-family;
+    font-family: font-family($font-family);
   } @else {
-    font-family: $settings-font-primary;
+    font-family: font-family(primary);
   }
 
   @if $font-size {
@@ -105,7 +105,7 @@
     margin-bottom: $margin-bottom;
   }
   @if $color {
-    color: $color;
+    color: map-get($settings-font-color, $color);
   }
   @if $text-transform {
     text-transform: $text-transform;

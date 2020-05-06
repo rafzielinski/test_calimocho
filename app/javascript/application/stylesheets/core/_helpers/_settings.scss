@@ -1,0 +1,9 @@
+
+@function font-color($key) {
+  @return map-get($settings-font-color, $key);
+}
+
+@function font-family($key) {
+  $value: map-get($settings-font-family, $key);
+  @return unquote($value);
+}
